@@ -84,3 +84,6 @@ fi
 if [ -f "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure

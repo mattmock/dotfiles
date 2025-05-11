@@ -2,6 +2,16 @@
 
 My personal dotfiles repository for managing configuration files across different machines.
 
+## Prerequisites & What the Script Does
+
+- **Git**: Must be installed (the script will check for it)
+- **Zsh**: If not installed, the script will install it (supports apt and brew)
+- **~/.local/bin in PATH**: The script will add this to your PATH and .bashrc if missing
+- **Pure prompt**: The script will install and configure it automatically
+- **Aliases & Functions**: The script ensures `.zsh_aliases` and `.zsh_functions` exist
+- **Default shell**: The script will prompt to set Zsh as your default shell if it isn't already
+- **Cursor Editor**: Optional, but recommended. See below for setup tips.
+
 ## Overview
 
 This repository contains configuration files for various tools and applications, organized in a way that makes it easy to maintain and deploy across different machines.
@@ -117,12 +127,76 @@ git return-to-wip
    ./install.sh
    ```
 
-The installation script will:
+The installation script will now:
+- Install Zsh if missing
+- Ensure `~/.local/bin` is in your PATH
+- Install and configure the Pure prompt
+- Create `.zsh_aliases` and `.zsh_functions` if missing
+- Set Zsh as your default shell (with prompt)
 - Check for required dependencies
 - Create necessary directories
 - Set up symlinks for all configuration files
 - Install Git commands globally in `~/.local/bin`
 - Install Oh My Zsh and required plugins
+
+**After installation, restart your terminal or run:**
+```bash
+source ~/.zshrc
+```
+
+to apply all changes.
+
+## Cursor Editor (Optional)
+If you use the Cursor editor:
+- Download the AppImage from the official site
+- Move it to `~/Applications/`
+- Make it executable: `chmod +x ~/Applications/cursor.AppImage`
+- (Optional) Create a desktop entry for easy launching
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Git commands not found**
+   - Ensure `~/.local/bin` is in your PATH
+   - Run `echo $PATH` to verify
+   - Add to your shell config if missing: `export PATH="$HOME/.local/bin:$PATH"`
+
+2. **Oh My Zsh plugins not working**
+   - Check if plugins are installed: `ls ~/.oh-my-zsh/custom/plugins`
+   - Install missing plugins:
+     ```bash
+     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+     ```
+
+3. **Pure prompt not working**
+   - Ensure the Pure prompt is cloned to `~/.zsh/pure`
+   - Ensure your `.zshrc` contains:
+     ```zsh
+     fpath+=$HOME/.zsh/pure
+     autoload -U promptinit; promptinit
+     prompt pure
+     ```
+
+4. **Hyper terminal issues**
+   - Install required plugins:
+     ```bash
+     hyper i hyper-snazzy hyper-search hyper-pane
+     ```
+   - Restart Hyper after installation
+
+5. **Symlinks not working**
+   - Check if files exist in source directory
+   - Ensure you have write permissions in home directory
+   - Run `./install.sh` again to recreate symlinks
+
+6. **Zsh not default shell after install**
+   - Run `chsh -s $(which zsh)` and restart your terminal
+
+## Platform Support
+
+This configuration is designed to work on both macOS and Linux systems. The installation script and configurations automatically detect the operating system and apply the appropriate settings.
 
 ## Requirements
 
@@ -132,9 +206,12 @@ The installation script will:
 - `~/.local/bin` in your PATH (for global Git commands)
 - Hyper terminal (optional, for terminal configuration)
 
-## Platform Support
-
-This configuration is designed to work on both macOS and Linux systems. The installation script and configurations automatically detect the operating system and apply the appropriate settings.
+The installation script will:
+- Check for required dependencies
+- Create necessary directories
+- Set up symlinks for all configuration files
+- Install Git commands globally in `~/.local/bin`
+- Install Oh My Zsh and required plugins
 
 ## Troubleshooting
 

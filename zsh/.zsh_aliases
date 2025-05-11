@@ -1,0 +1,31 @@
+# Common aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git aliases
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+
+# Directory shortcuts
+alias dotfiles='cd ~/Projects/dotfiles'
+alias projects='cd ~/Projects'
+
+# System aliases
+alias update='sudo apt update && sudo apt upgrade'
+alias clean='sudo apt clean && sudo apt autoremove'
+alias ports='sudo lsof -i -P -n | grep LISTEN'
+
+# Editor aliases
+alias zshconfig="$EDITOR ~/.zshrc"
+alias aliases="$EDITOR ~/.zsh_aliases"
+alias functions="$EDITOR ~/.zsh_functions" 

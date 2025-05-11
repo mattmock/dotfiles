@@ -20,9 +20,12 @@ backup_file() {
 
 # Function to check zsh version
 check_zsh_version() {
-    if [ "${ZSH_VERSION%%.*}" -lt 5 ]; then
-        echo "Warning: zsh version 5.0 or higher recommended"
-        echo "Current version: $ZSH_VERSION"
+    if command -v zsh &> /dev/null; then
+        ZSH_VERSION=$(zsh --version | cut -d' ' -f2)
+        if [ "${ZSH_VERSION%%.*}" -lt 5 ]; then
+            echo "Warning: zsh version 5.0 or higher recommended"
+            echo "Current version: $ZSH_VERSION"
+        fi
     fi
 }
 
@@ -53,14 +56,44 @@ cleanup() {
 # Check for required dependencies
 echo "Checking dependencies..."
 
-# Check for zsh
+# Check for zsh, install if missing
 if ! command -v zsh &> /dev/null; then
-    echo "Error: zsh is not installed"
-    exit 1
+    echo "Zsh not found. Installing..."
+    if command -v apt-get &> /dev/null; then
+        sudo apt-get update && sudo apt-get install -y zsh
+    elif command -v brew &> /dev/null; then
+        brew install zsh
+    else
+        echo "Please install zsh manually."
+        exit 1
+    fi
 fi
 
-# Check zsh version
-check_zsh_version
+# Ensure ~/.local/bin is in PATH
+if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Install Pure prompt if missing
+if [ ! -d "$HOME/.zsh/pure" ]; then
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+fi
+if ! grep -q 'fpath+=$HOME/.zsh/pure' "$HOME/.zshrc" 2>/dev/null; then
+    echo 'fpath+=$HOME/.zsh/pure' >> "$HOME/.zshrc"
+    echo 'autoload -U promptinit; promptinit' >> "$HOME/.zshrc"
+    echo 'prompt pure' >> "$HOME/.zshrc"
+fi
+
+# Create empty .zsh_aliases and .zsh_functions if missing in dotfiles repo
+[ -f "$DOTFILES_DIR/zsh/.zsh_aliases" ] || touch "$DOTFILES_DIR/zsh/.zsh_aliases"
+[ -f "$DOTFILES_DIR/zsh/.zsh_functions" ] || touch "$DOTFILES_DIR/zsh/.zsh_functions"
+
+# Prompt to set zsh as default shell
+if [ "$SHELL" != "$(which zsh)" ]; then
+    echo "Setting Zsh as your default shell..."
+    chsh -s "$(which zsh)"
+fi
 
 # Check for git
 if ! command -v git &> /dev/null; then
