@@ -121,6 +121,7 @@ fi
 echo "Creating directories..."
 mkdir -p ~/.local/bin
 mkdir -p ~/.oh-my-zsh/custom/plugins
+mkdir -p ~/.config/Cursor/User
 
 # Backup existing files
 echo "Backing up existing files..."
@@ -129,6 +130,7 @@ backup_file "$HOME/.zsh_aliases"
 backup_file "$HOME/.zsh_functions"
 backup_file "$HOME/.gitconfig"
 backup_file "$HOME/.hyper.js"
+backup_file "$HOME/.config/Cursor/User/settings.json"
 
 # Create symlinks
 echo "Creating symlinks..."
@@ -137,6 +139,7 @@ ln -sf "$DOTFILES_DIR/zsh/.zsh_aliases" ~/.zsh_aliases
 ln -sf "$DOTFILES_DIR/zsh/.zsh_functions" ~/.zsh_functions
 ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_DIR/hyper/.hyper.js" ~/.hyper.js
+ln -sf "$DOTFILES_DIR/cursor/settings.json" ~/.config/Cursor/User/settings.json
 
 # Install Git scripts globally
 echo "Installing Git scripts..."

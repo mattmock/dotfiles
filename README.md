@@ -152,6 +152,10 @@ If you use the Cursor editor:
 - Move it to `~/Applications/`
 - Make it executable: `chmod +x ~/Applications/cursor.AppImage`
 - (Optional) Create a desktop entry for easy launching
+- The installation script will automatically set up your Cursor settings with:
+  - Zsh as the default terminal shell
+  - Minimal configuration focused on essential terminal settings
+  - Cross-platform support for Linux and macOS
 
 ## Troubleshooting
 
