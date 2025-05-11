@@ -1,0 +1,20 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	editor = cursor -w
+[alias]
+	save-wip = "!git-save-wip"
+	restore-wip = "!git-restore-wip"
+	list-wip = "!git-list-wip"
+	return-to-wip = "!git-return-to-wip"
+[init]
+	defaultBranch = main
+[rebase]
+	autoStash = true
+[pull]
+	rebase = true
+[commit]
+	gpgsign = false
