@@ -1,0 +1,51 @@
+{
+    "salesforcedx-vscode-core.show-cli-success-msg": false,
+    "git.inputValidationSubjectLength": 72,
+    "git.inputValidationLength": 500,
+    "git.enableCommitSigning": false,
+    "git.pullBeforeCheckout": true,
+    "git.useCommitInputAsStrictTemplate": true,
+    "salesforcedx-vscode-slds.basic.deprecated": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": [
+                "-l",
+                "-c",
+                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
+            ]
+        }
+    },
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.env.osx": {
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.env.linux": {
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.env.windows": {
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": [
+                "-l",
+                "-c",
+                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
+            ]
+        }
+    },
+    "terminal.integrated.profiles.windows": {
+        "zsh": {
+            "path": "zsh.exe",
+            "args": [
+                "-l",
+                "-c",
+                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
+            ]
+        }
+    }
+}

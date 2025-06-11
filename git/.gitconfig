@@ -5,6 +5,7 @@
 	required = true
 [core]
 	editor = cursor -w
+	excludesfile = /Users/mmock/Projects/dotfiles/git/.gitignore_global
 [alias]
 	save-wip = "!git-save-wip"
 	restore-wip = "!git-restore-wip"
