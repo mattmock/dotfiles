@@ -1,0 +1,24 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "cmd+ctrl+z",
+    "command": "workbench.action.evenEditorWidths",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+ctrl+t",
+    "command": "toggle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "apexcodecoverage",
+      "value": [
+        {
+          "salesforcedx-vscode-core.retrieve-test-code-coverage": true
+        },
+        {
+          "salesforcedx-vscode-core.retrieve-test-code-coverage": false
+        }
+      ]
+    }
+  }
+]

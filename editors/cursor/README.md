@@ -8,6 +8,7 @@ This directory contains configuration files for the Cursor editor, including ter
 - Zsh shell integration
 - UTF-8 support
 - Editor-specific environment variables
+- Custom keyboard shortcuts
 
 ## Configuration Files
 
@@ -33,6 +34,15 @@ This directory contains configuration files for the Cursor editor, including ter
 }
 ```
 
+### `keybindings.json`
+
+Custom keyboard shortcuts for Cursor editor:
+
+- `Cmd+Ctrl+Z`: Even editor widths
+- `Cmd+Ctrl+T`: Toggle Salesforce test code coverage
+- `Cmd+I`: Composer mode agent
+- `Cmd+\``: Toggle terminal
+
 ## Integration with Terminal History
 
 The Cursor configuration works in conjunction with the shared terminal history feature in `editors/vscode/zsh-editor-config.zsh`. This ensures:
@@ -45,7 +55,7 @@ The Cursor configuration works in conjunction with the shared terminal history f
 
 The installation script will:
 1. Create necessary directories
-2. Set up symlinks for Cursor configuration
+2. Set up symlinks for Cursor configuration (settings.json and keybindings.json)
 3. Ensure terminal history feature is properly configured
 
 ## Usage

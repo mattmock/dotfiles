@@ -14,5 +14,7 @@
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.env.osx": {
         "LANG": "en_US.UTF-8"
-    }
+    },
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Default Dark Modern"
 } 

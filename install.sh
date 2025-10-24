@@ -159,7 +159,9 @@ backup_file "$HOME/.zsh_functions"
 backup_file "$HOME/.gitconfig"
 backup_file "$HOME/.hyper.js"
 backup_file "$HOME/Library/Application Support/Code/User/settings.json"
+backup_file "$HOME/Library/Application Support/Code/User/keybindings.json"
 backup_file "$HOME/Library/Application Support/Cursor/User/settings.json"
+backup_file "$HOME/Library/Application Support/Cursor/User/keybindings.json"
 
 # Create symlinks
 echo "🔗 Creating symlinks..."
@@ -169,7 +171,9 @@ ln -sf "$DOTFILES_DIR/zsh/.zsh_functions" ~/.zsh_functions
 ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_DIR/hyper/.hyper.js" ~/.hyper.js
 ln -sf "$DOTFILES_DIR/editors/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+ln -sf "$DOTFILES_DIR/editors/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
 ln -sf "$DOTFILES_DIR/editors/cursor/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
+ln -sf "$DOTFILES_DIR/editors/cursor/keybindings.json" "$HOME/Library/Application Support/Cursor/User/keybindings.json"
 
 # Install Git scripts globally
 echo "📜 Installing Git scripts..."
