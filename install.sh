@@ -151,6 +151,9 @@ mkdir -p "$HOME/Library/Application Support/Code/User"
 mkdir -p "$HOME/Library/Application Support/Cursor/User"
 mkdir -p "$HOME/.config/editor-history"
 
+# Clean up old symlinks first
+cleanup
+
 # Backup existing files
 echo "📦 Backing up existing files..."
 backup_file "$HOME/.zshrc"
@@ -208,9 +211,6 @@ fi
 if ! grep -q "zsh-editor-config.zsh" ~/.zshrc; then
     echo "📝 Adding terminal history configuration to .zshrc..."
 fi
-
-# Clean up old files
-cleanup
 
 echo "✅ Installation complete!"
 echo "   Please restart your shell to apply changes."
