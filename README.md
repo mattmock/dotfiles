@@ -163,6 +163,37 @@ git return-to-wip
 - Rebase settings configured for cleaner history
 - GPG signing disabled by default
 
+#### 🔑 Multiple Git Identities (Personal & Work)
+
+If you work with multiple Git accounts (e.g., personal and work), you'll need to set up machine-specific configuration:
+
+1. **Copy the example file:**
+   ```bash
+   cp git/.gitconfig.local.example ~/.gitconfig.local
+   ```
+
+2. **Edit `~/.gitconfig.local`** to configure conditional includes based on directory:
+   ```gitconfig
+   [includeIf "gitdir:~/Projects/"]
+       path = ~/.gitconfig-personal
+   [includeIf "gitdir:~/Work/"]
+       path = ~/.gitconfig-work
+   ```
+
+3. **Create identity files** (`~/.gitconfig-personal` and `~/.gitconfig-work`):
+   ```gitconfig
+   [user]
+       name = Your Name
+       email = your.email@example.com
+   ```
+
+The main `.gitconfig` includes `~/.gitconfig.local`, which is machine-specific and not tracked in the repo. This allows you to:
+- Keep the dotfiles repo public without exposing your directory structure
+- Use different Git identities for different project directories
+- Maintain machine-specific configurations
+
+**Note**: The `.gitconfig.local` file is optional. If you only use one Git identity, you can add a `[user]` section directly to `~/.gitconfig.local`.
+
 ## Installation
 
 1. Clone the repository:

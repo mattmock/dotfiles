@@ -213,5 +213,11 @@ if ! grep -q "zsh-editor-config.zsh" ~/.zshrc; then
 fi
 
 echo "✅ Installation complete!"
+echo ""
+echo "⚠️  IMPORTANT: Git Identity Configuration"
+echo "   If you use multiple Git accounts (personal/work), set up ~/.gitconfig.local"
+echo "   See the 'Multiple Git Identities' section in README.md for instructions"
+echo "   Example file: git/.gitconfig.local.example"
+echo ""
 echo "   Please restart your shell to apply changes."
 echo "   If you encounter any issues, check the troubleshooting section in SETUP.md" 
