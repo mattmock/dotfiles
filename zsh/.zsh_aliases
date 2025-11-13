@@ -28,4 +28,7 @@ alias ports='sudo lsof -i -P -n | grep LISTEN'
 # Editor aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias aliases="$EDITOR ~/.zsh_aliases"
-alias functions="$EDITOR ~/.zsh_functions" 
+alias functions="$EDITOR ~/.zsh_functions"
+
+# Python aliases
+alias python='python3' 
