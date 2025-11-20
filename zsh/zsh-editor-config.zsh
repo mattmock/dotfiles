@@ -6,12 +6,7 @@ fi
 # Set the guard variable
 _ZSH_EDITOR_CONFIG_LOADED=1
 
-# Show startup messages
-if [ -n "${DOTFILES_DIR:-}" ]; then
-    echo "DOTFILES_DIR: $DOTFILES_DIR"
-    echo "Loading editor config from: $DOTFILES_DIR/zsh/zsh-editor-config.zsh"
-else
-    echo "DOTFILES_DIR is not set"
+if [ -z "${DOTFILES_DIR:-}" ]; then
     return 1
 fi
 
@@ -116,42 +111,28 @@ manage_history_file() {
 WORKSPACE_PATH=$(detect_workspace_path)
 
 if [ -n "$WORKSPACE_PATH" ]; then
-    # Create history directory in project root
     HISTORY_DIR="$WORKSPACE_PATH/.config/editor-history"
     HISTORY_FILE="$HISTORY_DIR/.zsh_history"
     
-    echo "Setting up history at: $HISTORY_FILE"
+    manage_history_file "$HISTORY_FILE" 2>/dev/null
     
-    # Set up history file
-    manage_history_file "$HISTORY_FILE"
-    
-    # Set history options
     HISTFILE="$HISTORY_FILE"
     HISTSIZE=10000
     SAVEHIST=10000
     
-    # Basic history options
     setopt EXTENDED_HISTORY
     setopt HIST_IGNORE_DUPS
     setopt HIST_IGNORE_SPACE
     setopt HIST_VERIFY
     setopt INC_APPEND_HISTORY
     
-    # Save history after each command
     function precmd() {
         fc -W
     }
     
-    # Load existing history
-    fc -R
-    
-    echo "History setup complete"
-    echo "HISTFILE: $HISTFILE"
-else
-    echo "No workspace path detected"
-    echo "Current directory: $(pwd)"
+    fc -R 2>/dev/null
 fi
 
-# Use Pure prompt in editor workspaces
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
-prompt pure 
+prompt pure 2>/dev/null || true 
