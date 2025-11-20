@@ -54,7 +54,7 @@ When creating a new project, you need to set up the workspace settings. You have
    # From your dotfiles directory
    ./editors/setup-workspace-settings.sh /path/to/new/project
    # Or from within the project directory
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 2. **Manual Setup**
@@ -67,7 +67,7 @@ For existing projects that need the workspace settings:
 
 1. Run the setup script:
    ```bash
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 2. Restart your editor
@@ -127,7 +127,7 @@ The `gh()` function automatically switches GitHub CLI accounts based on your cur
 
 2. Set up workspace settings:
    ```bash
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 3. Open in VS Code/Cursor:
@@ -144,7 +144,7 @@ The `gh()` function automatically switches GitHub CLI accounts based on your cur
 
 2. Set up workspace settings:
    ```bash
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 3. Make your first commit:
@@ -159,11 +159,11 @@ The `gh()` function automatically switches GitHub CLI accounts based on your cur
    ```bash
    # In project A
    cd /path/to/project-a
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
 
    # In project B
    cd /path/to/project-b
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 2. Each project will have its own:
@@ -245,7 +245,7 @@ echo $GH_ACCOUNT_MAPPINGS
 1. Create your new project directory
 2. Run the workspace settings setup:
    ```bash
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 3. Open in your preferred editor
 

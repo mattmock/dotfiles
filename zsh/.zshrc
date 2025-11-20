@@ -13,7 +13,6 @@ find_dotfiles_dir() {
         "$HOME/Projects/dotfiles"
         "$HOME/dotfiles"
         "$HOME/.dotfiles"
-        "/Users/mmock/Projects/dotfiles"  # Fallback for your specific setup
     )
 
     # Check each location

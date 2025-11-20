@@ -183,6 +183,7 @@ ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
 ln -sf "$DOTFILES_DIR/zsh/.zsh_aliases" ~/.zsh_aliases
 ln -sf "$DOTFILES_DIR/zsh/.zsh_functions" ~/.zsh_functions
 ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES_DIR/git/.gitignore_global" ~/.gitignore_global
 ln -sf "$DOTFILES_DIR/hyper/.hyper.js" ~/.hyper.js
 ln -sf "$DOTFILES_DIR/editors/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 ln -sf "$DOTFILES_DIR/editors/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"

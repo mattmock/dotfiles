@@ -92,5 +92,5 @@ These settings are project-specific and need to be added to each new project. Th
 
 For convenience, you can use the setup script:
 ```bash
-/Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+~/Projects/dotfiles/editors/setup-workspace-settings.sh
 ``` 

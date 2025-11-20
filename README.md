@@ -33,7 +33,7 @@ When creating a new VS Code or Cursor project, you MUST set up the workspace set
    # From your dotfiles directory
    ./editors/setup-workspace-settings.sh /path/to/new/project
    # Or from within the project directory
-   /Users/mmock/Projects/dotfiles/editors/setup-workspace-settings.sh
+   ~/Projects/dotfiles/editors/setup-workspace-settings.sh
    ```
 
 2. **Manual Setup**
