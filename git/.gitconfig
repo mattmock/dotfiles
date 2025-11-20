@@ -19,12 +19,6 @@
 	rebase = true
 [commit]
 	gpgsign = false
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/local/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/local/bin/gh auth git-credential
 
 [include]
 	path = ~/.gitconfig.local
