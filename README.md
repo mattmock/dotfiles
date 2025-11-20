@@ -50,6 +50,7 @@ dotfiles/
 │   ├── .zshrc              # Main zsh configuration
 │   ├── .zsh_aliases        # Custom aliases
 │   ├── .zsh_functions      # Custom functions
+│   ├── .zsh_env.example    # Example environment variables (copy to ~/.zsh_env)
 │   └── zsh-editor-config.zsh # Project-specific terminal history
 ├── git/
 │   ├── .gitconfig          # Git configuration
@@ -84,6 +85,7 @@ dotfiles/
 - Improved tab completion with menu selection
 - Smart directory navigation (auto-cd, case-insensitive globbing)
 - Automatic loading of aliases and functions
+- **GitHub CLI account auto-switching**: The `gh()` function automatically switches GitHub accounts based on your current directory. Configure path-to-account mappings in `~/.zsh_env` (see [Setup](#setup) section)
 
 ### Editor Configuration
 #### VS Code and Cursor
@@ -226,6 +228,32 @@ source ~/.zshrc
 ```
 
 to apply all changes.
+
+### GitHub Account Auto-Switching Setup
+
+The `gh()` function automatically switches GitHub CLI accounts based on your current directory. To configure this:
+
+1. **Copy the example file:**
+   ```bash
+   cp zsh/.zsh_env.example ~/.zsh_env
+   ```
+
+2. **Edit `~/.zsh_env`** with your actual paths and GitHub account names:
+   ```bash
+   GH_ACCOUNT_MAPPINGS="$HOME/Projects*:personalaccount,$HOME/Work*:workaccount"
+   ```
+
+3. **Format**: `"PATH_PATTERN:ACCOUNT_NAME,PATH_PATTERN:ACCOUNT_NAME"`
+   - `PATH_PATTERN` supports shell glob patterns (e.g., `*` for wildcards)
+   - Multiple mappings are separated by commas
+   - The function will automatically switch accounts when you `cd` into matching directories
+
+4. **Reload your shell:**
+   ```bash
+   source ~/.zshrc
+   ```
+
+The `~/.zsh_env` file is not tracked in git (keep it private). If the file doesn't exist or `GH_ACCOUNT_MAPPINGS` is not set, the function will show a warning but continue to work normally.
 
 ## Cursor Editor (Optional)
 If you use the Cursor editor:

@@ -73,6 +73,48 @@ For existing projects that need the workspace settings:
 2. Restart your editor
 3. Open a new terminal to verify the environment variables are set
 
+## GitHub Account Auto-Switching Setup
+
+The `gh()` function automatically switches GitHub CLI accounts based on your current directory. This is useful when working with multiple GitHub accounts (e.g., personal and work).
+
+### Initial Setup
+
+1. **Copy the example file:**
+   ```bash
+   cp ~/Projects/dotfiles/zsh/.zsh_env.example ~/.zsh_env
+   ```
+
+2. **Edit `~/.zsh_env`** with your actual paths and GitHub account names:
+   ```bash
+   # Example configuration
+   GH_ACCOUNT_MAPPINGS="$HOME/Projects*:personalaccount,$HOME/Work*:workaccount"
+   ```
+
+3. **Format**: `"PATH_PATTERN:ACCOUNT_NAME,PATH_PATTERN:ACCOUNT_NAME"`
+   - `PATH_PATTERN` supports shell glob patterns (e.g., `*` for wildcards)
+   - Multiple mappings are separated by commas
+   - The function matches your current directory against these patterns
+
+4. **Reload your shell:**
+   ```bash
+   source ~/.zshrc
+   ```
+
+### How It Works
+
+- When you run `gh` commands, the function checks your current directory
+- If it matches a configured path pattern, it switches to the corresponding GitHub account
+- If no mapping is found, it uses your current GitHub account
+- The function shows which account is active and when it switches accounts
+
+### Troubleshooting
+
+- **Warning message about `GH_ACCOUNT_MAPPINGS` not configured**: Create `~/.zsh_env` and set the variable (see above)
+- **Account not switching**: Verify your path patterns match your current directory
+- **Account switching fails**: Ensure the GitHub account name exists in your `gh auth` setup
+
+**Note**: The `~/.zsh_env` file is not tracked in git to keep your account information private.
+
 ## Common Use Cases
 
 ### Setting Up a New Python Project
@@ -173,6 +215,9 @@ echo $DOTFILES_DIR
 
 # Check history file
 echo $HISTFILE
+
+# Check GitHub account mappings (if configured)
+echo $GH_ACCOUNT_MAPPINGS
 ```
 
 ## Maintenance

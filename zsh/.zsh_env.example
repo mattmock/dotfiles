@@ -1,0 +1,29 @@
+# GitHub Account Auto-Switching Configuration
+# 
+# This file contains environment variables for the gh() function in .zsh_functions
+# 
+# SETUP INSTRUCTIONS:
+# 1. Copy this file to ~/.zsh_env (or another location of your choice)
+# 2. Update the GH_ACCOUNT_MAPPINGS value with your actual paths and account names
+# 3. Source this file in your ~/.zshrc:
+#    source ~/.zsh_env
+# 4. Add ~/.zsh_env to your .gitignore to keep your account info private
+#
+# FORMAT:
+# GH_ACCOUNT_MAPPINGS="PATH_PATTERN:ACCOUNT_NAME,PATH_PATTERN:ACCOUNT_NAME"
+#
+# PATH_PATTERN supports shell glob patterns (e.g., * for wildcards)
+# Multiple mappings are separated by commas
+#
+# EXAMPLES:
+# Single mapping:
+# GH_ACCOUNT_MAPPINGS="$HOME/work/personal*:personalaccount"
+#
+# Multiple mappings:
+# GH_ACCOUNT_MAPPINGS="$HOME/work/personal*:personalaccount,$HOME/work/company*:workaccount"
+#
+# With specific subdirectories:
+# GH_ACCOUNT_MAPPINGS="$HOME/projects/client-a*:clientaccount,$HOME/projects/client-b*:otheraccount"
+
+GH_ACCOUNT_MAPPINGS="$HOME/work/personal*:personalaccount,$HOME/work/company*:workaccount"
+

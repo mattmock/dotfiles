@@ -102,6 +102,17 @@ fi
 [ -f "$DOTFILES_DIR/zsh/.zsh_aliases" ] || touch "$DOTFILES_DIR/zsh/.zsh_aliases"
 [ -f "$DOTFILES_DIR/zsh/.zsh_functions" ] || touch "$DOTFILES_DIR/zsh/.zsh_functions"
 
+# Create .zsh_env from example if missing in home directory
+if [ ! -f "$HOME/.zsh_env" ]; then
+    if [ -f "$DOTFILES_DIR/zsh/.zsh_env.example" ]; then
+        echo "📝 Creating ~/.zsh_env from example..."
+        cp "$DOTFILES_DIR/zsh/.zsh_env.example" "$HOME/.zsh_env"
+        echo "   ⚠️  Please edit ~/.zsh_env with your actual GitHub account mappings"
+    else
+        echo "⚠️  Warning: .zsh_env.example not found in dotfiles"
+    fi
+fi
+
 # Prompt to set zsh as default shell
 if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Setting Zsh as your default shell..."

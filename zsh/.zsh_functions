@@ -45,4 +45,56 @@ gitinit() {
 # Quick directory size
 dirsize() {
     du -sh "$1" 2>/dev/null || du -sh .
+}
+
+# Auto-switch gh CLI account based on directory
+# Configure GH_ACCOUNT_MAPPINGS env var with format: "PATH_PATTERN:ACCOUNT_NAME,PATH_PATTERN:ACCOUNT_NAME"
+# Example: GH_ACCOUNT_MAPPINGS="$HOME/work/personal*:personalaccount,$HOME/work/company*:workaccount"
+# Set this in your ~/.zshrc or source from ~/.zsh_env (see .zsh_env.example)
+gh() {
+    local current_dir=$(pwd)
+    local target_account=""
+    local active_account=$(command gh auth status 2>/dev/null | grep -A 1 "Logged in" | grep "account" | sed 's/.*account //' | sed 's/ (.*//' | head -1)
+    
+    if [ -z "$GH_ACCOUNT_MAPPINGS" ]; then
+        echo "⚠️  GH_ACCOUNT_MAPPINGS not configured. GitHub account auto-switching disabled." >&2
+        echo "   Configure in ~/.zshrc or ~/.zsh_env (see .zsh_env.example)" >&2
+        if [ -n "$active_account" ]; then
+            echo "📌 Active GitHub account: $active_account" >&2
+        fi
+    else
+        local mappings=("${(@s:,:)GH_ACCOUNT_MAPPINGS}")
+        
+        for mapping in "${mappings[@]}"; do
+            if [[ "$mapping" == *":"* ]]; then
+                local path_pattern="${mapping%%:*}"
+                local account_name="${mapping#*:}"
+                
+                if [[ "$current_dir" == ${~path_pattern} ]]; then
+                    target_account="$account_name"
+                    break
+                fi
+            fi
+        done
+        
+        if [ -n "$target_account" ]; then
+            if [ -z "$active_account" ]; then
+                echo "⚠️  Could not determine current GitHub account. Attempting to switch to: $target_account" >&2
+                command gh auth switch -u "$target_account" >/dev/null 2>&1
+                active_account="$target_account"
+            elif [ "$active_account" != "$target_account" ]; then
+                echo "🔄 Switching GitHub account from '$active_account' to '$target_account'" >&2
+                command gh auth switch -u "$target_account" >/dev/null 2>&1
+                active_account="$target_account"
+            else
+                echo "✓ GitHub account '$target_account' is active" >&2
+            fi
+        fi
+        
+        if [ -n "$active_account" ]; then
+            echo "📌 Active GitHub account: $active_account" >&2
+        fi
+    fi
+    
+    command gh "$@"
 } 

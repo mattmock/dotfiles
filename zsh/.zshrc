@@ -49,11 +49,10 @@ if [ -n "$DOTFILES_DIR" ] && [ -f "$DOTFILES_DIR/zsh/zsh-editor-config.zsh" ]; t
     source "$DOTFILES_DIR/zsh/zsh-editor-config.zsh"
 fi
 
-# Load Pure prompt if not in an editor workspace
-if [ -z "${WORKSPACE_FOLDER:-}" ]; then
-    autoload -U promptinit; promptinit
-    prompt pure
-fi
+# Load Pure prompt
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
 
 # Detect OS and set editor with fallback chain
 case "$(uname -s)" in
@@ -111,6 +110,19 @@ setopt NUMERIC_GLOB_SORT
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
 
+# Load environment variables if they exist (not tracked in git)
+# Create from example if missing
+if [ ! -f ~/.zsh_env ]; then
+    if [ -n "${DOTFILES_DIR:-}" ] && [ -f "$DOTFILES_DIR/zsh/.zsh_env.example" ]; then
+        echo "📝 Creating ~/.zsh_env from example..."
+        cp "$DOTFILES_DIR/zsh/.zsh_env.example" ~/.zsh_env
+        echo "   ⚠️  Please edit ~/.zsh_env with your actual GitHub account mappings"
+        source ~/.zsh_env
+    fi
+elif [ -f ~/.zsh_env ]; then
+    source ~/.zsh_env
+fi
+
 # Initialize rbenv if it exists
 if command -v rbenv &> /dev/null; then
     eval "$(rbenv init -)"
@@ -139,6 +151,5 @@ fi
 if [ -f "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
+
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
