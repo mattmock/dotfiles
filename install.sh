@@ -160,7 +160,6 @@ mkdir -p ~/.local/bin
 mkdir -p ~/.oh-my-zsh/custom/plugins
 mkdir -p "$HOME/Library/Application Support/Code/User"
 mkdir -p "$HOME/Library/Application Support/Cursor/User"
-mkdir -p "$HOME/.config/editor-history"
 
 # Clean up old symlinks first
 cleanup
@@ -217,11 +216,6 @@ fi
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
     echo "   Installing zsh-syntax-highlighting..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-fi
-
-# Add terminal history configuration to .zshrc if not already present
-if ! grep -q "zsh-editor-config.zsh" ~/.zshrc; then
-    echo "📝 Adding terminal history configuration to .zshrc..."
 fi
 
 echo "✅ Installation complete!"

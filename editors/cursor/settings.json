@@ -3,7 +3,12 @@
     "terminal.integrated.profiles.osx": {
         "zsh": {
             "path": "/bin/zsh",
-            "args": ["-l"]
+            "args": ["-l"],
+            "icon": "terminal"
+        },
+        "bash": {
+            "path": "/bin/bash",
+            "hidden": true
         }
     },
     "terminal.integrated.inheritEnv": false,
