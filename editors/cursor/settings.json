@@ -3,16 +3,30 @@
     "terminal.integrated.profiles.osx": {
         "zsh": {
             "path": "/bin/zsh",
-            "args": ["-l"],
-            "env": {
-                "WORKSPACE_FOLDER": "${workspaceFolder}",
-                "CURSOR_WORKSPACE": "${workspaceFolder}"
-            }
+            "args": ["-l"]
         }
     },
-    "terminal.integrated.inheritEnv": true,
+    "terminal.integrated.inheritEnv": false,
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.env.osx": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_EDITOR": "true",
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.env.linux": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_EDITOR": "true",
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.env.windows": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_EDITOR": "true",
         "LANG": "en_US.UTF-8"
     },
     "workbench.preferredDarkColorTheme": "Default Dark Modern",

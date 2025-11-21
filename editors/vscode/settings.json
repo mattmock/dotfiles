@@ -10,42 +10,39 @@
     "terminal.integrated.profiles.osx": {
         "zsh": {
             "path": "/bin/zsh",
-            "args": [
-                "-l",
-                "-c",
-                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
-            ]
+            "args": ["-l"]
         }
     },
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.env.osx": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
         "LANG": "en_US.UTF-8"
     },
     "terminal.integrated.env.linux": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
         "LANG": "en_US.UTF-8"
     },
     "terminal.integrated.env.windows": {
+        "WORKSPACE_FOLDER": "${workspaceFolder}",
+        "VSCODE_WORKSPACE": "${workspaceFolder}",
+        "CURSOR_WORKSPACE": "${workspaceFolder}",
         "LANG": "en_US.UTF-8"
     },
     "terminal.integrated.profiles.linux": {
         "zsh": {
             "path": "/bin/zsh",
-            "args": [
-                "-l",
-                "-c",
-                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
-            ]
+            "args": ["-l"]
         }
     },
     "terminal.integrated.profiles.windows": {
         "zsh": {
             "path": "zsh.exe",
-            "args": [
-                "-l",
-                "-c",
-                "export WORKSPACE_FOLDER='${workspaceFolder}' && export VSCODE_WORKSPACE='${workspaceFolder}' && exec zsh"
-            ]
+            "args": ["-l"]
         }
     }
 }
